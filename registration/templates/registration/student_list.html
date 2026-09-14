@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 
-<html> <head> <title>Student List</title> </head> <body>
+<html> 
+<head> 
+    <title>Student List</title>
+</head> 
+
+<body>
+
+{% if user.is_authenticated %} 
+    <p>Logged in as: {{ user.username }}</p> 
+    <form method="post" action="{% url 'logout' %}"> 
+        {% csrf_token %} 
+    <button type="submit">Logout</button> 
+    </form> 
+{% endif %}
 
 <h1>Student List</h1>
 
 <a href="{% url 'student_create' %}">Register Student</a>
 
 <br><br>
+
+
 
 {% if students %}
 
@@ -31,6 +46,10 @@
                 <a href="{% url 'student_delete' student.id %}">
                     Delete
                 </a>
+
+                <a href="{% url 'student_dashboard' %}">
+                    Student Dashboard
+                </a>"
             </td>
         </tr>
         {% endfor %}
