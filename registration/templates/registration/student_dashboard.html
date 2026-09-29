@@ -6,6 +6,31 @@
     </head>
 
     <body>
+
+        <section> 
+            <label for="student-search">Search name or email:</label> 
+            <input 
+                type="search"
+                id="student-search" 
+                placeholder="Type a name or email" 
+            > 
+
+            <label for="program-filter">Filter by program:</label> 
+            <select id="program-filter"> 
+                <option value="">All programs</option> 
+            </select> 
+
+            <button type="button" id="clear-filters"> 
+                Clear Filters 
+            </button> 
+
+            <button type="button" id="refresh-students"> 
+                Refresh Data 
+            </button> 
+        </section> 
+
+        <p id="result-count" aria-live="polite">Showing 0 students</p>
+
         <h1>Student Dashboard</h1>
 
         <h2>
@@ -93,7 +118,9 @@
             Back to Student List
         </a>
 
-        <script src="{% static 'registration/js/student_dashboard.js' %}"></script>
+        <script src="{% static 'registration/js/student_dashboard.js' %}" defer></script> 
+        <!-- adding defer fixes the JS loading issue where it loads before the HTML elements were available-->
+         
     </body>
 </html>
 
