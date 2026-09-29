@@ -18,7 +18,7 @@ async function loadStudents() {
 
     try {
         const response = await fetch("/api/students/");
-g
+
         if (!response.ok) {
             if (response.status === 401) {
                 throw new Error("Authentication required. Please log in.");
